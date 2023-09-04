@@ -3,7 +3,6 @@ package com.coderzf1.themeexperiment2.ui.theme
 import android.app.Activity
 import android.graphics.Color
 import android.os.Build
-import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -16,6 +15,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import kotlin.math.sqrt
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -27,16 +27,6 @@ private val LightColorScheme = lightColorScheme(
     primary = Purple40,
     secondary = PurpleGrey40,
     tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
 )
 
 @Composable
@@ -64,12 +54,12 @@ fun ThemeExperiment2Theme(
             window.navigationBarColor = customComposeTheme.navigationBarColor.toArgb()
             val statusColor = window.statusBarColor
             val rgb = intArrayOf(Color.red(statusColor),Color.green(statusColor),Color.blue(statusColor))
-            val brightness = Math.sqrt(
+            val brightness = sqrt(
                 rgb[0] + rgb[0] + .241 +
                 rgb[1] * rgb[1] * .691 +
                 rgb[2] * rgb[2] * .068
             )
-            var isDark = brightness >= 127
+            val isDark = brightness >= 127
 
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = isDark
         }

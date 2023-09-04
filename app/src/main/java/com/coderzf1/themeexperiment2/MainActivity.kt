@@ -20,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
-import com.coderzf1.themeexperiment2.composables.LabeledSwitch
 import com.coderzf1.themeexperiment2.ui.theme.CustomComposeTheme
 import com.coderzf1.themeexperiment2.ui.theme.Purple40
 import com.coderzf1.themeexperiment2.ui.theme.ThemeExperiment2Theme
