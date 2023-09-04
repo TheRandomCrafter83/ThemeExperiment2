@@ -1,7 +1,9 @@
 package com.coderzf1.themeexperiment2.ui.theme
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Build
+import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -40,6 +42,7 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun ThemeExperiment2Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
+    customComposeTheme: CustomComposeTheme = CustomComposeTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
@@ -57,8 +60,18 @@ fun ThemeExperiment2Theme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            window.statusBarColor = customComposeTheme.statusBarColor.toArgb()
+            window.navigationBarColor = customComposeTheme.navigationBarColor.toArgb()
+            val statusColor = window.statusBarColor
+            val rgb = intArrayOf(Color.red(statusColor),Color.green(statusColor),Color.blue(statusColor))
+            val brightness = Math.sqrt(
+                rgb[0] + rgb[0] + .241 +
+                rgb[1] * rgb[1] * .691 +
+                rgb[2] * rgb[2] * .068
+            )
+            var isDark = brightness >= 127
+
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = isDark
         }
     }
 
