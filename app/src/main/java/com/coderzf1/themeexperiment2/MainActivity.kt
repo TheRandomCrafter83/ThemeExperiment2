@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
             }
             ThemeExperiment2Theme(
                 customComposeTheme = CustomComposeTheme(
-                    statusBarColor = Color(testColor),
+                    darkTheme = isSystemInDarkTheme(),
                     primaryColor = 
                     if(!isSystemInDarkTheme()) {
                         colorResource(id = R.color.purple_200)

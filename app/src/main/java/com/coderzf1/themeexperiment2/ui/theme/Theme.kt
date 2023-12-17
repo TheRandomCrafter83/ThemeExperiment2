@@ -43,8 +43,8 @@ fun ThemeExperiment2Theme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> customComposeTheme.asColorScheme()
+        else -> customComposeTheme.asColorScheme()
     }
     val view = LocalView.current
     if (!view.isInEditMode) {

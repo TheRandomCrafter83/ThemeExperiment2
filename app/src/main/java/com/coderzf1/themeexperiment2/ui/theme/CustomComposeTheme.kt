@@ -40,36 +40,75 @@ data class CustomComposeTheme(
     val scrimColor: Color = (when(darkTheme){true->darkColorScheme() false->lightColorScheme()}).scrim
 ){
     fun asColorScheme(): ColorScheme {
-        return lightColorScheme(
-            primary = primaryColor,
-            secondary = secondaryColor,
-            tertiary = tertiaryColor,
-            background = backgroundColor,
-            surface = surfaceColor,
-            onPrimary = onPrimaryColor,
-            onSecondary = onSecondaryColor,
-            onTertiary = onTertiaryColor,
-            onBackground = onBackgroundColor,
-            onSurface = onSurfaceColor,
-            primaryContainer = primaryContainerColor,
-            onPrimaryContainer = onPrimaryContainerColor,
-            inversePrimary = inversePrimaryColor,
-            secondaryContainer = secondaryContainerColor,
-            onSecondaryContainer = onSecondaryContainerColor,
-            tertiaryContainer = tertiaryContainerColor,
-            onTertiaryContainer = onTertiaryContainerColor,
-            surfaceVariant = surfaceVariantColor,
-            onSurfaceVariant  = onSurfaceVariantColor,
-            surfaceTint = surfaceTintColor,
-            inverseSurface = inverseSurfaceColor,
-            inverseOnSurface = inverseOnSurfaceColor,
-            error = errorColor,
-            onError = onErrorColor,
-            errorContainer = errorContainerColor,
-            onErrorContainer = onErrorContainerColor,
-            outline = outlineColor,
-            outlineVariant = outlineVariantColor,
-            scrim = scrimColor
-        )
+        return when (darkTheme){
+            true -> {
+                lightColorScheme(
+                    primary = primaryColor,
+                    secondary = secondaryColor,
+                    tertiary = tertiaryColor,
+                    background = backgroundColor,
+                    surface = surfaceColor,
+                    onPrimary = onPrimaryColor,
+                    onSecondary = onSecondaryColor,
+                    onTertiary = onTertiaryColor,
+                    onBackground = onBackgroundColor,
+                    onSurface = onSurfaceColor,
+                    primaryContainer = primaryContainerColor,
+                    onPrimaryContainer = onPrimaryContainerColor,
+                    inversePrimary = inversePrimaryColor,
+                    secondaryContainer = secondaryContainerColor,
+                    onSecondaryContainer = onSecondaryContainerColor,
+                    tertiaryContainer = tertiaryContainerColor,
+                    onTertiaryContainer = onTertiaryContainerColor,
+                    surfaceVariant = surfaceVariantColor,
+                    onSurfaceVariant  = onSurfaceVariantColor,
+                    surfaceTint = surfaceTintColor,
+                    inverseSurface = inverseSurfaceColor,
+                    inverseOnSurface = inverseOnSurfaceColor,
+                    error = errorColor,
+                    onError = onErrorColor,
+                    errorContainer = errorContainerColor,
+                    onErrorContainer = onErrorContainerColor,
+                    outline = outlineColor,
+                    outlineVariant = outlineVariantColor,
+                    scrim = scrimColor
+                )
+            }
+            false -> {
+                darkColorScheme(
+                    primary = primaryColor,
+                    secondary = secondaryColor,
+                    tertiary = tertiaryColor,
+                    background = backgroundColor,
+                    surface = surfaceColor,
+                    onPrimary = onPrimaryColor,
+                    onSecondary = onSecondaryColor,
+                    onTertiary = onTertiaryColor,
+                    onBackground = onBackgroundColor,
+                    onSurface = onSurfaceColor,
+                    primaryContainer = primaryContainerColor,
+                    onPrimaryContainer = onPrimaryContainerColor,
+                    inversePrimary = inversePrimaryColor,
+                    secondaryContainer = secondaryContainerColor,
+                    onSecondaryContainer = onSecondaryContainerColor,
+                    tertiaryContainer = tertiaryContainerColor,
+                    onTertiaryContainer = onTertiaryContainerColor,
+                    surfaceVariant = surfaceVariantColor,
+                    onSurfaceVariant  = onSurfaceVariantColor,
+                    surfaceTint = surfaceTintColor,
+                    inverseSurface = inverseSurfaceColor,
+                    inverseOnSurface = inverseOnSurfaceColor,
+                    error = errorColor,
+                    onError = onErrorColor,
+                    errorContainer = errorContainerColor,
+                    onErrorContainer = onErrorContainerColor,
+                    outline = outlineColor,
+                    outlineVariant = outlineVariantColor,
+                    scrim = scrimColor
+                )
+
+            }
+        }
+
     }
 }
