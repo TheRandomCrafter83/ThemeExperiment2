@@ -3,6 +3,8 @@ package com.coderzf1.themeexperiment2
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +21,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.coderzf1.themeexperiment2.ui.theme.CustomComposeTheme
 import com.coderzf1.themeexperiment2.ui.theme.Purple40
@@ -32,7 +36,17 @@ class MainActivity : ComponentActivity() {
             var testColor by remember {
                 mutableStateOf(Purple40.toArgb())
             }
-            ThemeExperiment2Theme(customComposeTheme = CustomComposeTheme(statusBarColor = Color(testColor))) {
+            ThemeExperiment2Theme(
+                customComposeTheme = CustomComposeTheme(
+                    statusBarColor = Color(testColor),
+                    primaryColor = 
+                    if(!isSystemInDarkTheme()) {
+                        colorResource(id = R.color.purple_200)
+                    } else {
+                        colorResource(id = R.color.purple_700)
+                    }
+                )
+            ) {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -43,29 +57,30 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .padding(8.dp)
                     ) {
-                        Button(onClick = {
-                            testColor = Color.Blue.toArgb()
-                        }) {
-                            Text("Blue")
-                        }
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Button(onClick = {
-                            testColor = Color.Yellow.toArgb()
-                        }) {
-                            Text("Yellow")
-                        }
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Button(onClick = {
-                            testColor = Color.LightGray.toArgb()
-                        }) {
-                            Text("Light Gray")
-                        }
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Button(onClick = {
-                            testColor = Color.DarkGray.toArgb()
-                        }) {
-                            Text("Dark Gray")
-                        }
+                        Image(painter = painterResource(id = R.drawable.ic_message), contentDescription = null)
+//                        Button(onClick = {
+//                            testColor = Color.Blue.toArgb()
+//                        }) {
+//                            Text("Blue")
+//                        }
+//                        Spacer(modifier = Modifier.height(8.dp))
+//                        Button(onClick = {
+//                            testColor = Color.Yellow.toArgb()
+//                        }) {
+//                            Text("Yellow")
+//                        }
+//                        Spacer(modifier = Modifier.height(8.dp))
+//                        Button(onClick = {
+//                            testColor = Color.LightGray.toArgb()
+//                        }) {
+//                            Text("Light Gray")
+//                        }
+//                        Spacer(modifier = Modifier.height(8.dp))
+//                        Button(onClick = {
+//                            testColor = Color.DarkGray.toArgb()
+//                        }) {
+//                            Text("Dark Gray")
+//                        }
 //                        LabeledSwitch(checked = isDarkMode, onCheckedChange = {isDarkMode = it}){
 //                            Text("Dark Mode")
 //                        }
